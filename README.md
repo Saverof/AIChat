@@ -1,97 +1,101 @@
-# Приложение AI Chat
+# **AI Chat**
+A chat application that uses the OpenRouter API to interact with various artificial intelligence models.
 
-Чат-приложение, использующее API OpenRouter для взаимодействия с различными моделями искусственного интеллекта.
+## Getting Started
 
-## Начало работы
+### Installation and Setup
 
-### Установка и настройка
+1. **Install Required Software**
+   - Install [Git](https://git-scm.com/downloads)
+   - Install [Python 3.9+](https://www.python.org/downloads/)
+   - Install [Visual Studio Code](https://code.visualstudio.com/download)
 
-1. **Установка необходимого ПО**
-   - Установите [Git](https://git-scm.com/downloads)
-   - Установите [Python 3.9+](https://www.python.org/downloads/)
-   - Установите [Visual Studio Code](https://code.visualstudio.com/download)
+2. **Cloning the Project**
 
-2. **Клонирование проекта**
    ```bash
-   # Клонируйте репозиторий
+   # Clone the repository
    git clone https://github.com/Saverof/AIChat.git
-   # Перейдите в директорию проекта
+   # Navigate to the project directory
    cd AIChat
    ```
 
-3. **Настройка VSCode**
-   - Откройте VSCode
-   - Установите рекомендуемые расширения:
+3. **VSCode Configuration**
+   - Open VSCode
+   - Install recommended extensions:
      - Python (ms-python.python)
      - Python Environment Manager
      - Python Extension Pack
-   - Откройте проект: File -> Open Folder -> AIChat
-   - Выберите интерпретатор Python: 
-     1. Нажмите F1 или Ctrl+Shift+P
-     2. Введите "Python: Select Interpreter"
-     3. Выберите Python 3.9 или выше
+   - Open the project: **File** → **Open Folder** → Select the `AIChat` folder
+   - Select the Python interpreter:
+     1. Press **F1** or **Ctrl+Shift+P**
+     2. Type **"Python: Select Interpreter"**
+     3. Choose **Python 3.9** or higher
 
-4. **Настройка виртуального окружения**
+4. **Virtual Environment Setup**
+
    ```bash
-   # Создание виртуального окружения
+   # Create a virtual environment
    python -m venv venv
-   
-   # Активация виртуального окружения
-   # Для Windows:
+
+   # Activate the virtual environment
+   # For Windows:
    .\venv\Scripts\activate
-   # Для Linux/Mac:
+   # For Linux/Mac:
    source venv/bin/activate
    ```
 
-5. **Настройка переменных окружения**
-   - Скопируйте файл `.env.example` в новый файл `.env`
-   - Откройте `.env` и замените `your_api_key_here` на ваш API ключ OpenRouter
-   - Остальные настройки можно оставить по умолчанию
+5. **Environment Variables Configuration**
+   - Copy the `.env.example` file to a new `.env` file
+   - Open `.env` and replace `your_api_key_here` with your OpenRouter API key
+   - The remaining settings can be left as default
 
-## Сборка приложения
+## **Building the Application**
 
-### Требования
+### Requirements
+- Python 3.9 or higher
 
-- Python 3.9 или выше
+### Windows Build
 
-### Сборка для Windows
+1. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-1. Установка зависимостей:
-```bash
-pip install -r requirements.txt
+2. Build the executable:
+   ```bash
+   python build.py
+   ```
+
+   The executable will be created at `bin/AIChat.exe`.
+
+---
+
+### Linux Build
+
+1. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. Build the executable:
+   ```bash
+   python3 build.py
+   ```
+
+   The executable will be created at `bin/aichat`.
+
+3. Set execution permissions:
+   ```bash
+   chmod +x bin/aichat
+   ```
+
+---
+
+### Configuration
+
+Create a `.env` file in the root directory with the following content:
 ```
-
-2. Сборка исполняемого файла:
-```bash
-python build.py
-```
-
-Исполняемый файл будет создан по пути `bin/AIChat.exe`
-
-### Сборка для Linux
-
-1. Установка зависимостей:
-```bash
-pip install -r requirements.txt
-```
-
-2. Сборка исполняемого файла:
-```bash
-python3 build.py
-```
-
-Исполняемый файл будет создан по пути `bin/aichat`
-
-3. Установка прав на выполнение:
-```bash
-chmod +x bin/aichat
-```
-
-## Конфигурация
-
-Создайте файл `.env` в корневой директории со следующим содержимым:
-```
-OPENROUTER_API_KEY=ваш_api_ключ
+OPENROUTER_API_KEY=your_api_key
 BASE_URL=https://openrouter.ai/api/v1
 DEBUG=False
 LOG_LEVEL=INFO
@@ -99,90 +103,89 @@ MAX_TOKENS=1000
 TEMPERATURE=0.7
 ```
 
-## Структура проекта
+## **Project Structure**
 
 ```
-├── assets/                # Ресурсы приложения
-│   └── icon.ico           # Иконка приложения
-├── bin/                   # Скомпилированные исполняемые файлы
-├── build/                 # Временные файлы сборки
-├── exports/               # Директория для экспортированных чатов
-├── logs/                  # Логи приложения
-├── src/                   # Исходный код
-│   ├── api/               # API интеграции
+├── assets/                # Application resources
+│   └── icon.ico           # Application icon
+├── bin/                   # Compiled executables
+├── build/                 # Temporary build files
+├── exports/               # Directory for exported chats
+├── logs/                  # Application logs
+├── src/                   # Source code
+│   ├── api/               # API integration
 │   │   ├── __init__.py
-│   │   └── openrouter.py  # Взаимодействие с OpenRouter API
-│   ├── ui/                # Пользовательский интерфейс
+│   │   └── openrouter.py  # OpenRouter API interaction
+│   ├── ui/                # User interface
 │   │   ├── __init__.py
-│   │   ├── components.py  # UI компоненты
-│   │   └── styles.py      # Стили интерфейса
-│   ├── utils/             # Утилиты
+│   │   ├── components.py  # UI components
+│   │   └── styles.py      # Interface styles
+│   ├── utils/             # Utilities
 │   │   ├── __init__.py
-│   │   ├── analytics.py   # Аналитика использования
-│   │   ├── cache.py       # Кэширование
-│   │   ├── logger.py      # Система логирования
-│   │   └── monitor.py     # Мониторинг системы
-│   ├── main_simple.py     # Упрощенная версия main.py с урезанным функционалом
-│   └── main.py            # Точка входа приложения
-├── .env.example           # Пример конфигурации
-├── .gitignore             # Исключения Git
-├── build.py               # Скрипт сборки
-├── requirements.txt       # Зависимости Python
-└── README.md              # Документация
+│   │   ├── analytics.py   # Usage analytics
+│   │   ├── cache.py       # Caching
+│   │   ├── logger.py      # Logging system
+│   │   └── monitor.py     # System monitoring
+│   ├── main_simple.py     # Simplified version of main.py with limited functionality
+│   └── main.py            # Application entry point
+├── .env.example           # Configuration example
+├── .gitignore             # Git exclusions
+├── build.py               # Build script
+├── requirements.txt       # Python dependencies
+└── README.md              # Documentation
 ```
 
-## Подробное описание функционала
+## **Detailed Feature Description**
+### **Core Features**
 
-### Основные возможности
+1. **Chat with AI Models**
+   - Support for various models via the OpenRouter API
+   - Contextual dialogues with history retention
+   - Customizable generation parameters (temperature, maximum token count)
 
-1. **Чат с AI моделями**
-   - Поддержка различных моделей через OpenRouter API
-   - Контекстные диалоги с сохранением истории
-   - Настраиваемые параметры генерации (температура, максимальное количество токенов)
+2. **Chat History Management**
+   - Automatic saving of dialogue history
+   - Ability to view previous conversations
+   - Exporting dialogues in various formats
 
-2. **Управление историей чатов**
-   - Автоматическое сохранение истории диалогов
-   - Возможность просмотра предыдущих бесед
-   - Экспорт диалогов в различные форматы
+3. **Usage Analytics**
+   - Tracking usage of different models
+   - Statistics on the number of requests
+   - Monitoring token consumption
 
-3. **Аналитика использования**
-   - Отслеживание использования различных моделей
-   - Статистика по количеству запросов
-   - Мониторинг потребления токенов
+4. **System Functions**
+   - Caching for performance optimization
+   - Detailed logging of application operation
+   - System resource monitoring
 
-4. **Системные функции**
-   - Кэширование для оптимизации производительности
-   - Подробное логирование работы приложения
-   - Мониторинг системных ресурсов
+### **Technical Features**
 
-### Технические особенности
+- **Caching (utils/cache.py)**
+  - Local storage of chat history
+  - Optimization of repeated requests
+  - Cache size management
 
-- **Кэширование (utils/cache.py)**
-  - Локальное хранение истории чатов
-  - Оптимизация повторяющихся запросов
-  - Управление размером кэша
+- **Logging (utils/logger.py)**
+  - Customizable logging levels
+  - Log file rotation
+  - Detailed error information
 
-- **Логирование (utils/logger.py)**
-  - Настраиваемые уровни логирования
-  - Ротация лог-файлов
-  - Детальная информация об ошибках
+- **Analytics (utils/analytics.py)**
+  - Collection of usage statistics
+  - Analysis of model popularity
+  - Resource usage reports
 
-- **Аналитика (utils/analytics.py)**
-  - Сбор статистики использования
-  - Анализ популярности моделей
-  - Отчеты по использованию ресурсов
+- **Monitoring (utils/monitor.py)**
+  - Performance tracking
+  - Control of system resource usage
+  - Notifications for critical events
 
-- **Мониторинг (utils/monitor.py)**
-  - Отслеживание производительности
-  - Контроль использования системных ресурсов
-  - Уведомления о критических событиях
+- **User Interface (ui/)**
+  - Modern design
+  - Customizable themes
+  - Responsive interface
 
-- **Пользовательский интерфейс (ui/)**
-  - Современный дизайн
-  - Настраиваемые темы оформления
-  - Адаптивный интерфейс
-
-- **API интеграция (api/)**
-  - Безопасное взаимодействие с OpenRouter
-  - Обработка ошибок и повторные попытки
-  - Поддержка различных моделей AI (более 215 моделей, в том числе более 20-ти бесплатных)
+- **API Integration (api/)**
+  - Secure interaction with OpenRouter
+  - Error handling and retries
+  - Support for various AI models (over 215 models, including more than 20 free ones)
